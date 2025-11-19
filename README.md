@@ -1,59 +1,81 @@
-# ec2-instance-using-IAC
+# EC2 Instance Using Terraform (IaC)
 
-If you dont have Linux setup then set an Virtual Server on AWS using EC2 ubuntu server prefferd .
-=> mkdir terraform-for-devops
-create an directory with the command and proceed then
-1. Install Terraform
+This project explains how to deploy an EC2 instance on AWS using Terraform.  
+You can either use a Linux machine or an AWS EC2 Ubuntu server for running Terraform commands.
+
+---
+
+## Prerequisites and Setup
+
+1. Create a working directory:
+```bash
+mkdir terraform-for-devops
+cd terraform-for-devops
+Install Terraform:
+
+bash
 sudo apt update
 sudo apt install wget unzip -y
 wget https://releases.hashicorp.com/terraform/1.9.5/terraform_1.9.5_linux_amd64.zip
 unzip terraform_1.9.5_linux_amd64.zip
 sudo mv terraform /usr/local/bin/
 terraform -version
+Install AWS CLI:
 
-✔ 2. Install AWS CLI
+bash
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 unzip awscliv2.zip
 sudo ./aws/install
 aws --version
+Configure AWS credentials:
 
-✔ 3. Configure AWS Credentials
+bash
 aws configure
-
-
-Enter:
+Enter the following when prompted:
 
 AWS Access Key ID
 
 AWS Secret Access Key
 
-Region (e.g., ap-south-1)
+Default region name (example: ap-south-1)
 
-Output format → json
+Output format (json)
 
-✔ 4. Create an SSH Key Pair (if not existing)
+Create an SSH key pair:
+
+bash
 ssh-keygen -t rsa -f terra-key-ec2
+This creates:
 
+terra-key-ec2 (private key — do not upload)
 
-This generates:
+terra-key-ec2.pub (public key)
 
-terra-key-ec2 (private key — DO NOT upload)
+Terraform Commands
+Initialize Terraform:
 
-terra-key-ec2.pub (public key — safe to upload)
-
------After set up proceed with these steps----
-
-👉 1️⃣ Initialize Terraform
+bash
 terraform init
+Validate configuration:
 
-👉 2️⃣ Validate Files
+bash
 terraform validate
+Preview resources:
 
-👉 3️⃣ Preview Resources (PLAN)
+bash
 terraform plan
+Apply configuration (create EC2 instance):
 
-👉 4️⃣ Apply the Configuration (CREATE EC2)
+bash
 terraform apply
+Type "yes" to confirm.
 
 
-Type yes to confirm.
+Destroy Infrastructure
+
+To delete all created resources:
+
+terraform destroy
+
+
+Type "yes" to confirm.
