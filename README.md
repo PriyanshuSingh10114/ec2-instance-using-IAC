@@ -3,6 +3,9 @@
 This project explains how to deploy an EC2 instance on AWS using Terraform.  
 You can either use a Linux machine or an AWS EC2 Ubuntu server for running Terraform commands.
 
+You can achieve complete automation using output.tf it will directly provide you all the ip's and direct ssh link that you can copy paste and use for development without changing the window.
+
+
 ---
 
 ## Prerequisites and Setup
